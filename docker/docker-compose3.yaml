@@ -1,0 +1,24 @@
+services:
+  selenium-chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: selenium-chrome
+    ports:
+      - "4445:4444"
+      - "7900:7900"
+    environment:
+      - SE_NODE_MAX_SESSIONS=4
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_VNC_NO_PASSWORD=1
+      - SE_VNC_VIEW_ONLY=0
+    shm_size: "2g"
+    platform: linux/amd64
+    restart: unless-stopped
+    volumes:
+      - ./downloads:/home/seluser/Downloads
+      - ./screenshots:/home/seluser/screenshots
+    networks:
+      - selenium-network
+
+networks:
+  selenium-network:
+    driver: bridge

@@ -1,0 +1,129 @@
+pipeline {
+    agent any
+    
+    environment {
+        ANDROID_HOME = '/opt/android-sdk'
+        ANDROID_SDK_ROOT = '/opt/android-sdk'
+        PATH = "${env.PATH}:${env.ANDROID_HOME}/emulator:${env.ANDROID_HOME}/platform-tools:${env.ANDROID_HOME}/cmdline-tools/latest/bin"
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo '📥 检出代码...'
+                checkout scm
+            }
+        }
+        
+        stage('Setup Environment') {
+            steps {
+                echo '🔧 设置环境...'
+                script {
+                    // 检查Android SDK
+                    sh 'echo "Android SDK路径: $ANDROID_HOME"'
+                    sh 'ls -la $ANDROID_HOME'
+                    
+                    // 列出可用的AVD
+                    sh '$ANDROID_HOME/cmdline-tools/latest/bin/emulator -list-avds'
+                }
+            }
+        }
+        
+        stage('Start Android Emulator') {
+            steps {
+                echo '🚀 启动Android模拟器...'
+                script {
+                    // 启动模拟器
+                    sh '''
+                        $ANDROID_HOME/emulator/emulator \
+                            -avd test_device \
+                            -no-audio \
+                            -no-window \
+                            -gpu swiftshader_indirect \
+                            -memory 2048 \
+                            -cores 2 &
+                    '''
+                    
+                    // 等待模拟器启动
+                    sleep 60
+                    
+                    // 检查设备连接
+                    sh '$ANDROID_HOME/platform-tools/adb devices'
+                }
+            }
+        }
+        
+        stage('Install Dependencies') {
+            steps {
+                echo '📦 安装依赖...'
+                script {
+                    // 安装Python依赖
+                    sh 'pip3 install -r requirements.txt || true'
+                    
+                    // 检查Appium
+                    sh 'appium --version'
+                }
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                echo '🧪 运行测试...'
+                script {
+                    // 启动Appium服务器
+                    sh 'appium --allow-cors &'
+                    sleep 10
+                    
+                    // 运行测试
+                    sh '''
+                        python3 -m pytest testcase/ \
+                            -v \
+                            --html=test_reports/report_${BUILD_NUMBER}.html \
+                            --json=test_reports/report_${BUILD_NUMBER}.json \
+                            --alluredir=allure_report
+                    '''
+                }
+            }
+        }
+        
+        stage('Generate Reports') {
+            steps {
+                echo '📊 生成测试报告...'
+                script {
+                    // 生成Allure报告
+                    sh 'allure generate allure_report --clean -o allure_report/html || true'
+                    
+                    // 归档测试报告
+                    archiveArtifacts artifacts: 'test_reports/*.html,test_reports/*.json,allure_report/html/**/*', fingerprint: true
+                }
+            }
+        }
+        
+        stage('Cleanup') {
+            steps {
+                echo '🧹 清理环境...'
+                script {
+                    // 停止模拟器
+                    sh '$ANDROID_HOME/platform-tools/adb emu kill || true'
+                    
+                    // 停止Appium
+                    sh 'pkill -f appium || true'
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo '📋 测试完成'
+            // 清理工作空间
+            cleanWs()
+        }
+        success {
+            echo '✅ 测试成功'
+        }
+        failure {
+            echo '❌ 测试失败'
+        }
+    }
+} 

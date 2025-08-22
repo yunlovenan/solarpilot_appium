@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jenkins-mobile-test
+    ports:
+      - "8080:8080"
+      - "4723:4723"  # Appium端口
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /dev/bus/usb:/dev/bus/usb  # USB设备访问（用于真机测试）
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw  # X11显示（用于GUI）
+    environment:
+      - DISPLAY=${DISPLAY}
+      - ANDROID_HOME=/opt/android-sdk
+      - ANDROID_SDK_ROOT=/opt/android-sdk
+    privileged: true  # 需要特权模式来访问硬件
+    devices:
+      - /dev/kvm:/dev/kvm  # KVM虚拟化支持
+    shm_size: '2gb'  # 增加共享内存大小
+
+volumes:
+  jenkins_home:
+    driver: local
