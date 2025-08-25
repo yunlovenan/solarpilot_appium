@@ -1,4 +1,4 @@
-#!/Users/mayun/project/solarpilot/solarpilot_appium/.venv/bin/python
+#!/Users/mayun/project/solarpilot/solarpilot_appium/.venv/bin/python3.13
 # -*- coding: utf-8 -*-
 import re
 import sys
