@@ -9,7 +9,7 @@ appium-python-client==3.1.1
 selenium==4.15.2
 
 # 报告生成
-allure-pytest==2.13.2
+allure-pytest==2.10.0
 
 # 数据处理
 openpyxl==3.1.2
