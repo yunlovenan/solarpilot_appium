@@ -1,0 +1,133 @@
+检测到的测试类型: 移动端
+命令行参数: ['/Users/mayun/project/solarpilot/solarpilot_appium/.venv/bin/pytest', 'testcase/test_app_01_login.py', '-v', '--alluredir=allure-results', '--junitxml=junit.xml']
+环境变量 TEST_TYPE: None
+环境变量 FORCE_TEST_TYPE: mobile
+------------open mobile app------------
+✅ 移动端驱动初始化成功
+📱 应用将保持登录状态，使用缓存的cookies登录
+{'username': 'mayunfws', 'password': 'mayun1314@'}
+🚀 开始登录流程...
+📱 用户名: mayunfws
+🔒 密码: mayun1314@
+🔍 跳过登录状态检查，直接执行登录流程
+⏳ 等待页面加载...
+✅ 页面加载完成
+📄 页面源码长度: 18961
+✅ 页面中包含EditText元素
+✅ 页面中包含Button元素
+✅ 页面中包含View元素
+📋 页面源码前500字符: <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<hierarchy index="0" class="hierarchy" rotation="0" width="1080" height="2400">
+  <android.widget.FrameLayout index="0" package="com.eiot6.solartest" class="android.widget.FrameLayout" text="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" long-clickable="false" password="false" scrollable="false" selected="false" bounds="[0,136][1080,2400]" displayed="true" a11y-important="true" scre
+
+📋 第一步：处理用户协议
+ℹ️ Agree按钮不存在，可能已经同意过了
+
+⏳ 第二步：等待页面稳定...
+
+🔍 第三步：查找输入框元素
+📝 找到 2 个EditText元素
+❌ 查找EditText元素失败: Message: 'placeholder' attribute is unknown for the element. Only the following attributes are supported: [checkable, checked, {class,className}, clickable, {content-desc,contentDescription}, enabled, focusable, focused, {long-clickable,longClickable}, package, password, {resource-id,resourceId}, scrollable, selection-start, selection-end, selected, {text,name}, hint, extras, bounds, displayed, contentSize, {a11y-important,importantForAccessibility}, {screen-reader-focusable,screenReaderFocusable}, {input-type,inputType}, {drawing-order,drawingOrder}, {showing-hint,showingHintText}, {text-entry-key,textEntryKey}, {multiline,multiLine}, dismissable, {a11y-focused,accessibilityFocused}, heading, {live-region,liveRegion}, {context-clickable,contextClickable}, {max-text-length,maxTextLength}, {content-invalid,contentInvalid}, {error,errorText}, {pane-title,paneTitle}, {tooltip-text,tooltipText}, {text-has-clickable-span,textHasClickableSpan}, actions]
+Stacktrace:
+io.appium.uiautomator2.common.exceptions.NoSuchAttributeException: 'placeholder' attribute is unknown for the element. Only the following attributes are supported: [checkable, checked, {class,className}, clickable, {content-desc,contentDescription}, enabled, focusable, focused, {long-clickable,longClickable}, package, password, {resource-id,resourceId}, scrollable, selection-start, selection-end, selected, {text,name}, hint, extras, bounds, displayed, contentSize, {a11y-important,importantForAccessibility}, {screen-reader-focusable,screenReaderFocusable}, {input-type,inputType}, {drawing-order,drawingOrder}, {showing-hint,showingHintText}, {text-entry-key,textEntryKey}, {multiline,multiLine}, dismissable, {a11y-focused,accessibilityFocused}, heading, {live-region,liveRegion}, {context-clickable,contextClickable}, {max-text-length,maxTextLength}, {content-invalid,contentInvalid}, {error,errorText}, {pane-title,paneTitle}, {tooltip-text,tooltipText}, {text-has-clickable-span,textHasClickableSpan}, actions]
+	at io.appium.uiautomator2.utils.ElementHelpers.generateNoAttributeException(ElementHelpers.java:102)
+	at io.appium.uiautomator2.model.UiObject2Element.getAttribute(UiObject2Element.java:79)
+	at io.appium.uiautomator2.handler.GetElementAttribute.safeHandle(GetElementAttribute.java:24)
+	at io.appium.uiautomator2.handler.request.SafeRequestHandler.handle(SafeRequestHandler.java:59)
+	at io.appium.uiautomator2.server.AppiumServlet.handleRequest(AppiumServlet.java:259)
+	at io.appium.uiautomator2.server.AppiumServlet.handleHttpRequest(AppiumServlet.java:253)
+	at io.appium.uiautomator2.http.ServerHandler.channelRead(ServerHandler.java:77)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.CombinedChannelDuplexHandler$DelegatingChannelHandlerContext.fireChannelRead(CombinedChannelDuplexHandler.java:438)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:328)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:302)
+	at io.netty.channel.CombinedChannelDuplexHandler.channelRead(CombinedChannelDuplexHandler.java:253)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:287)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:352)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1422)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:374)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:360)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:931)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:700)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:635)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:552)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:514)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$6.run(SingleThreadEventExecutor.java:1044)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:1119)
+
+
+👤 第四步：输入用户名 'mayunfws'
+🔍 准备点击用户名输入框...
+✅ 用户名输入框获得焦点
+✅ 用户名输入框已清空
+✅ 用户名 'mayunfws' 输入成功
+📝 实际输入内容: 'mayunfws'
+
+🔒 第五步：输入密码 'mayun1314@'
+🔍 准备点击密码输入框...
+✅ 密码输入框获得焦点
+✅ 密码输入框已清空
+✅ 密码 'mayun1314@' 输入成功
+📝 密码输入框内容: **********
+
+☑️ 第六步：处理服务条款复选框
+🔍 开始处理服务条款复选框...
+📋 将尝试 2 种定位策略
+  🔍 尝试定位策略 1: ('-android uiautomator', 'new UiSelector().textContains("I\'ve read and agreed")')
+  🔍 尝试定位策略 2: ('xpath', "//*[contains(@content-desc, 'agree') or contains(@content-desc, 'policy') or contains(@content-desc, 'Agree') or contains(@content-desc, 'Policy')]")
+  ✅ 找到复选框元素 (策略 2)
+  📝 元素信息: content-desc='I've read and agreeed to ', text=''
+  👆 准备点击复选框...
+  ✅ 服务条款复选框点击成功 (策略 2)
+✅ 服务条款复选框处理成功
+
+🚀 第七步：点击登录按钮
+🔍 查找登录按钮...
+📝 登录按钮文本: 'Log In'
+👆 准备点击登录按钮...
+✅ 登录按钮点击成功
+⏳ 等待登录响应...
+
+🏢 第八步：处理服务商选择
+🔍 查找服务商按钮...
+✅ 找到服务商按钮
+📝 服务商按钮文本: 'I'm a service provider
+Quick setup, O&M, operation monitoring'
+👆 准备点击服务商按钮...
+✅ 服务商按钮点击成功
+
+🔐 第九步：处理权限弹窗
+🔍 开始处理权限弹窗...
+  🔍 尝试权限弹窗定位方法 1: ('-android uiautomator', 'new UiSelector().text("While using the app")')
+  🔍 尝试权限弹窗定位方法 2: ('-android uiautomator', 'new UiSelector().description("While using the app")')
+  🔍 尝试权限弹窗定位方法 3: ('xpath', "//*[@text='While using the app']")
+  🔍 尝试权限弹窗定位方法 4: ('xpath', "//*[contains(@content-desc, 'While using the app')]")
+  🔍 尝试权限弹窗定位方法 5: ('class name', 'android.widget.Button')
+  🔍 尝试权限弹窗定位方法 6: ('-android uiautomator', 'new UiSelector().clickable(true).text("While using the app")')
+⚠️ 未找到权限弹窗，可能已经处理过了
+
+💾 第十步：保存登录状态
+✅ 登录状态已保存到: mobile_login_state.json
+📱 设备ID: emulator-5554
+📱 应用状态: unknown
+📱 当前活动: .MainActivity
+
+🎉 登录流程完成！
+🔄 正在关闭移动端驱动...
+✅ 移动端驱动已关闭
+🔄 正在优雅地清理UiAutomator2进程...
+✅ UiAutomator2进程已正常退出

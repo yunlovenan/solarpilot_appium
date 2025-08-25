@@ -1,0 +1,4 @@
+2025-08-26 00:15:39,521 -- [test_app_01_login.py-->line:23] - INFO: 开始执行APP登录的用例
+2025-08-26 00:16:05,438 -- [base_page.py-->line:163] - INFO: 元素--('xpath', "//*[contains(@content-desc, 'agree') or contains(@content-desc, 'policy') or contains(@content-desc, 'Agree') or contains(@content-desc, 'Policy')]")--点击成功
+2025-08-26 00:17:03,113 -- [test_app_01_login.py-->line:61] - INFO: 用例执行通过
+2025-08-26 00:17:05,132 -- [test_app_01_login.py-->line:31] - INFO: 登录的用例执行完毕

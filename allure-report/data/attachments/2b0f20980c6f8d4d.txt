@@ -1,0 +1,6 @@
+检测到的测试类型: 移动端
+命令行参数: ['/Users/mayun/project/solarpilot/solarpilot_appium/.venv/bin/pytest', 'testcase/test_app_01_login.py', '-v', '--alluredir=allure-results', '--junitxml=junit.xml']
+环境变量 TEST_TYPE: None
+环境变量 FORCE_TEST_TYPE: mobile
+------------open mobile app------------
+❌ 移动端驱动初始化失败: HTTPConnectionPool(host='localhost', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x104984c30>: Failed to establish a new connection: [Errno 61] Connection refused'))

@@ -1,0 +1,4 @@
+[32mINFO    [0m test:test_app_01_login.py:23 开始执行APP登录的用例
+[32mINFO    [0m test:base_page.py:163 元素--('xpath', "//*[contains(@content-desc, 'agree') or contains(@content-desc, 'policy') or contains(@content-desc, 'Agree') or contains(@content-desc, 'Policy')]")--点击成功
+[32mINFO    [0m test:test_app_01_login.py:61 用例执行通过
+[32mINFO    [0m test:test_app_01_login.py:31 登录的用例执行完毕
