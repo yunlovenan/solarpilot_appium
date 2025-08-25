@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver import Chrome
 
 import pytest
+import requests
 
 from common.handle_config import conf
 from common.handle_logging import log
@@ -127,6 +128,58 @@ def driver():
         # 移动端测试 - 使用Appium driver
         print('------------open mobile app------------')
         try:
+            # 自动启动 Appium 服务器
+            import subprocess
+            import time
+            import requests
+            
+            def start_appium_server():
+                """启动 Appium 服务器"""
+                try:
+                    # 检查 Appium 是否已经在运行
+                    try:
+                        response = requests.get('http://localhost:4723/wd/hub/status', timeout=2)
+                        if response.status_code == 200:
+                            print("✅ Appium 服务器已在运行")
+                            return True
+                    except:
+                        pass
+                    
+                    print("🚀 正在启动 Appium 服务器...")
+                    # 启动 Appium 服务器
+                    appium_process = subprocess.Popen([
+                        'appium', 
+                        '--base-path', '/wd/hub', 
+                        '--allow-cors', 
+                        '--log', 'appium.log', 
+                        '--log-level', 'debug'
+                    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    
+                    # 等待服务器启动
+                    max_wait = 30  # 最大等待30秒
+                    for i in range(max_wait):
+                        try:
+                            response = requests.get('http://localhost:4723/wd/hub/status', timeout=2)
+                            if response.status_code == 200:
+                                print(f"✅ Appium 服务器启动成功 (耗时: {i+1}秒)")
+                                return True
+                        except:
+                            pass
+                        time.sleep(1)
+                        if i % 5 == 0:
+                            print(f"⏳ 等待 Appium 服务器启动... ({i+1}/{max_wait}秒)")
+                    
+                    print("❌ Appium 服务器启动超时")
+                    return False
+                    
+                except Exception as e:
+                    print(f"❌ 启动 Appium 服务器失败: {e}")
+                    return False
+            
+            # 启动 Appium 服务器
+            if not start_appium_server():
+                raise Exception("无法启动 Appium 服务器")
+            
             # 添加本地appium模块路径
             import os
             sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'appium_local'))
